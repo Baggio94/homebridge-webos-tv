@@ -224,7 +224,7 @@ Specify a custom file path to store the permission token for the TV. If the file
 - `prefsDir` [optional]
 The directory where TV model info should be saved. **Default: "~/.homebridge/.webosTv"**
 - `pollingInterval` [optional]
-The TV state background polling interval in seconds. **Default: 5**
+The TV state background polling interval in seconds. Minimum 3. **Default: 5**
 - `deepDebugLog` [optional]
 Enables additional more detailed debug log. Useful when trying to figure out issues with the plugin. **Default: false**
 - `silentLog` [optional]

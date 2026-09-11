@@ -55,7 +55,8 @@
               "title": "Background polling interval",
               "description": "How often to check the status of the tv in seconds.",
               "type": "number",
-              "default": 5
+              "default": 5,
+              "minimum": 3
             },
             "deepDebugLog": {
               "title": "Enable deep debug log",

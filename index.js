@@ -14,6 +14,7 @@ const NOT_EXISTING_INPUT = 999999;
 const DEFAULT_INPUT_SOURCES_LIMIT = 45;
 const BUTTON_RESET_TIMEOUT = 20; // in milliseconds
 const AUTOMATIONS_TRIGGER_TIMEOUT = 400; // in milliseconds
+const MIN_POLLING_INTERVAL = 3; // in seconds - lower values can cause reconnect storms
 
 export default (homebridge) => {
   Service = homebridge.hap.Service;
@@ -52,6 +53,11 @@ class webosTvDevice {
     this.keyFile = config.keyFile;
     this.prefsDir = config.prefsDir || api.user.storagePath() + '/.webosTv/';
     this.alivePollingInterval = config.pollingInterval || 5;
+    // clamp to a safe minimum, too low values can cause reconnect storms
+    if (this.alivePollingInterval < MIN_POLLING_INTERVAL) {
+      this.logWarn(`Polling interval ${this.alivePollingInterval}s is too low, using the minimum of ${MIN_POLLING_INTERVAL}s instead!`);
+      this.alivePollingInterval = MIN_POLLING_INTERVAL;
+    }
     this.alivePollingInterval = this.alivePollingInterval * 1000;
     this.deepDebugLog = config.deepDebugLog;
     this.silentLog = config.silentLog;
