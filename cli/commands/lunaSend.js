@@ -29,9 +29,8 @@ export const handler = async (argv) => {
     debug
   } = argv;
 
-  const parsedPayload = payload ? JSON.parse(payload) : {};
-
   try {
+    const parsedPayload = payload ? JSON.parse(payload) : {};
     log.info(`Connecting to tv at ${chalk.yellow(ip)}`);
     let lgTvCtrl = await WebosTvHelper.connect(ip, mac, debug, timeout);
     log.info(`Connected! Sending luna message: ${chalk.blueBright.bold(message)} - ${chalk.cyan.bold(JSON.stringify(parsedPayload))}`);

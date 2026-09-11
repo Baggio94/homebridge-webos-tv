@@ -279,8 +279,6 @@ class webosTvDevice {
         this.updateSoundModeButtons();
       }
     });
-
-    Events.SOUND_SETTINGS_CHANGED
   }
 
   /*----------========== SETUP SERVICES ==========----------*/
