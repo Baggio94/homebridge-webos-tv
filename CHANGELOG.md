@@ -6,6 +6,25 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.5.0] - 2026-09-11
+### Added
+- Add the `forceSsl` property which always connects to the TV using a secure (SSL) connection. Useful for newer webOS TVs which require SSL.
+
+### Changed
+- Improve the TV reconnection behavior by using a capped exponential backoff and avoiding multiple overlapping reconnect timers.
+- Enforce a minimum `pollingInterval` of 3 seconds to avoid reconnection issues caused by very low values.
+- Improve error logging for failed TV requests and subscriptions by including the TV response, to aid troubleshooting.
+
+### Fixed
+- Update the pairing manifest to fix pairing on webOS 25/26 TVs where the TV would not show the pairing prompt. Thanks @Michelasso for the updated manifest!
+- Fix a memory leak caused by event listeners not being cleaned up during repeated connect/reconnect cycles.
+- Fix HomeKit automations being re-triggered on reconnect by only emitting power and screen state events on actual state changes.
+- Fix all remaining input sources being dropped when an input had an invalid appId.
+- Fix the input source with identifier 0 never being reported as active.
+- Fix a possible crash when subscribing to a TV service while the TV is not connected.
+- Fix the `volume set` cli command crashing when setting a volume outside of the 0-100 range.
+
+
 ## [2.4.8] - 2026-02-17
 ### Added
 - Add `hdrFilmMaker` picture mode. Thanks @Dontodtod for the info!
