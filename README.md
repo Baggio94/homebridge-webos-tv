@@ -532,6 +532,22 @@ Go to *Homebridge Settings* and click on `Unpair Bridges / Cameras / TVs / Exter
 ###### HOOBS
 Use the `Reset Connection` button and after that try to add your TV to the HomeKit app.
 
+### TV works in the Homebridge UI but not in the Home app (Homebridge 2.x)
+On Homebridge 2.x the default mDNS advertiser was changed to `ciao`, which on some networks fails to advertise external accessories like the TV. In that case the TV responds and works in the Homebridge UI but does not appear or cannot be paired in the Home app.
+
+To fix that, switch back to the old advertiser by adding `advertiser` to your Homebridge `bridge` config:
+
+```
+"bridge": {
+    "name": "Homebridge",
+    "username": "**:**:**:**:**:**",
+    "pin": "***-**-***",
+    "advertiser": "bonjour-hap"
+}
+```
+
+After that restart Homebridge and try to add your TV to the Home app.
+
 ## Special thanks
 [lgtv2](https://github.com/hobbyquaker/lgtv2) - the Node.js remote control module for LG WebOS smart TVs.
 
