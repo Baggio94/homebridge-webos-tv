@@ -229,6 +229,8 @@ The TV state background polling interval in seconds. **Default: 5**
 Enables additional more detailed debug log. Useful when trying to figure out issues with the plugin. **Default: false**
 - `silentLog` [optional]
 When enabled all log output will only appear in the debug mode. **Default: false**
+- `forceSsl` [optional]
+Always connect to the TV using a secure (SSL) connection. Some newer webOS TVs require SSL and the automatic fallback may not connect reliably. **Default: false**
 - `hideTvService` [optional]
 Whether to hide the TV service. This is recommended if your TV supports native HomeKit integration, since the TV accessory already exists.  **Default: false**  
 - `volumeLimit` [optional]

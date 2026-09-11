@@ -61,6 +61,10 @@ class webosTvDevice {
     if (this.silentLog === undefined) {
       this.silentLog = false;
     }
+    this.forceSsl = config.forceSsl;
+    if (this.forceSsl === undefined) {
+      this.forceSsl = false;
+    }
     this.inputSourcesLimit = config.inputSourcesLimit || DEFAULT_INPUT_SOURCES_LIMIT;
     this.isHideTvService = config.hideTvService;
     if (this.isHideTvService === undefined) {
@@ -182,6 +186,7 @@ class webosTvDevice {
     this.lgTvCtrl.setVolumeLimit(this.volumeLimit);
     this.lgTvCtrl.setDeepDebugLogEnabled(this.deepDebugLog);
     this.lgTvCtrl.setSilentLogEnabled(this.silentLog);
+    this.lgTvCtrl.setForceSsl(this.forceSsl);
     this.lgTvCtrl.connect();
 
 

@@ -67,6 +67,11 @@
               "description": "When enabled all log output will only appear in the debug mode.",
               "type": "boolean"
             },
+            "forceSsl": {
+              "title": "Force SSL connection",
+              "description": "Always connect to the TV using a secure (SSL) connection. Some newer webOS TVs require SSL and the automatic fallback may not connect reliably.",
+              "type": "boolean"
+            },
             "hideTvService": {
               "title": "Hide the TV service",
               "description": "Recommended when the TV already supports native HomeKit integration to prevent double TV accessories.",
@@ -523,7 +528,8 @@
               "devices[].prefsDir",
               "devices[].hideTvService",
               "devices[].deepDebugLog",
-              "devices[].silentLog"
+              "devices[].silentLog",
+              "devices[].forceSsl"
             ]
           },
           {
