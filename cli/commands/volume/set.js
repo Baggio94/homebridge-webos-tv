@@ -33,19 +33,21 @@ export const handler = async argv => {
     process.exit(0);
   }
 
-  if (volume < 0) {
-    volume = 0;
+  let volumeLevel = volume;
+
+  if (volumeLevel < 0) {
+    volumeLevel = 0;
   }
 
-  if (volume > 100) {
-    volume = 100;
+  if (volumeLevel > 100) {
+    volumeLevel = 100;
   }
 
   try {
-    log.info(`Trying to set TV (${chalk.yellow(ip)}) volume to ${chalk.green.bold(volume)}`);
+    log.info(`Trying to set TV (${chalk.yellow(ip)}) volume to ${chalk.green.bold(volumeLevel)}`);
     let lgTvCtrl = await WebosTvHelper.connect(ip, mac, debug, timeout);
-    await lgTvCtrl.setVolumeLevel(volume);
-    log.success(`TV volume set to ${chalk.green.bold(volume)}`);
+    await lgTvCtrl.setVolumeLevel(volumeLevel);
+    log.success(`TV volume set to ${chalk.green.bold(volumeLevel)}`);
   } catch (err) {
     log.error(err.message);
   }
