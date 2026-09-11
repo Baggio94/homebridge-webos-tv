@@ -499,14 +499,12 @@ class webosTvDevice {
       // if appId null or empty then skip this input, appId is required to open an app
       if (!newInputDef.appId || newInputDef.appId === '' || typeof newInputDef.appId !== 'string') {
         this.logWarn(`Missing appId or appId is not of type string. Cannot add input source!`);
-        return;
+        this.dummyInputSourceServices.unshift(inputSourceService); // return the unused free input source service
+        continue;
       }
 
       // remove all white spaces from the appId string
       newInputDef.appId = newInputDef.appId.replace(/\s/g, '');
-
-      //appId
-      newInputDef.appId = newInputDef.appId;
 
       // name (name - input config, label - auto generated inputs)
       newInputDef.name = value.name || value.label || newInputDef.appId;
